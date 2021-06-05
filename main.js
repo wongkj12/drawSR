@@ -1,10 +1,10 @@
  var model = undefined;
 
- const canvas = document.getElementById("canvas");
+ var const canvas = document.getElementById("canvas");
  canvas.width = 256;
  canvas.height = 256;
 
- const oCanvas = document.getElementById("oCanvas");
+ var oCanvas = document.getElementById("oCanvas");
  oCanvas.width = 256;
  oCanvas.height = 256;
 
