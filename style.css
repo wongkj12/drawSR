@@ -1,0 +1,53 @@
+body{
+	background: #defade;
+	font-family: helvetica;
+	overflow:auto;
+}
+
+canvas {
+	box-shadow: -3px 2px 9px 6px black;
+	cursor: pointer;
+	margin-top: 15px;
+	margin-left: 70px;
+}
+
+.content {
+		max-width: 1200px;
+		margin: auto;
+		background: white;
+        padding: 10px;
+	}
+
+.tools {
+	display: flex;
+	margin-top: 15px;
+}
+
+.tools .color-field{
+	height: 40px;
+	width: 40px;
+	min-height: 40px;
+	min-width: 40px;
+	cursor: pointer;
+	display: inline-block;
+	background-position: center right;
+	border-style: solid;
+	font-size: 13px;
+}
+
+.tools .button {
+	align-self: center;
+	width: 50px;
+	height: 40px;
+	border: solid;
+	cursor: pointer;
+	color: white;
+	background: black;
+	font-weight: bold;
+	margin: 0 15px;
+}
+
+.pen-range {
+	/*align-self: center;
+	margin: 0 15 px;*/
+}

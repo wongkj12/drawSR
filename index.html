@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>DrawSR</title>
+		<link href="style.css" type="text/css" rel="stylesheet"/>
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<!-- tfjs script -->
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+		<!-- fabric script -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.3.3/fabric.js"></script>
+
+	</head>
+
+
+	<body>
+		<div class="content">
+			<h1>Pix2Pix DrawSR</hl>
+
+			<div class="field">
+			<h6 id = 'status' >Loading Model ... </h4>
+			<canvas id = "canvas"></canvas>
+			<canvas id = "oCanvas"></canvas>
+				<div class = "tools"/>
+					<button onClick="clear_canvas()" type="button" class="button">Clear</button>
+
+					<div onClick="change_color(this)" class="color-field" style="background: #ffffff;">bg</div> <!--background -->
+					<div onClick="change_color(this)" class="color-field" style="background: #000cff;">river</div> <!--river -->
+					<div onClick="change_color(this)" class="color-field" style="background: #fb8a05;">lane</div> <!--lane -->
+					<div onClick="change_color(this)" class="color-field" style="background: #fff600;">camp</div> <!--camp -->
+					<div onClick="change_color(this)" class="color-field" style="background: #068014;">terrain</div> <!--terrain -->
+					<div onClick="change_color(this)" class="color-field" style="background: #a0ed44;">brush</div> <!--brush -->
+					<div onClick="change_color(thiSs)" class="color-field" style="background: #56a1ff;">blue struct</div> <!--blue struct -->
+					<div onClick="change_color(this)" class="color-field" style="background: #ff0c0b;">red struct</div> <!--red struct -->
+					<div onClick="change_color(this)" class="color-field" style="background: #aaaAaa;">base</div> <!-- base floor -->
+
+					<input onInput="draw_width = this.value" type="range" min="10" max="100" class="pen-range">
+				</div>
+			</div>
+		</div>
+
+		<script src="main.js"></script>
+
+	<body>
+
+	<!-- script that loads the model -->
+	<script>
+	$(window).on('load', function(){
+		//prepareCanvas();
+		start("sr_sample.png", "localstorage://model/model.json")
+	});
+	</script>
+</html>
