@@ -33,7 +33,7 @@
 
  //start predicting when the mouse is up
  canvas.addEventListener("mouseup",() => {
- 	stop(event);
+ 	stop();
  	do_predict();},false);
  canvas.addEventListener("mouseout",stop,false);
 
