@@ -122,7 +122,7 @@ function samplePredict(imgName)
 			scaleX: canvas.width / 256,
 			scaleY: canvas.height / 256,
 		});
-		canvas.add(img);
+		context.drawImage(img, 0, 0);
 		const pred = predict(imgData);
 		tf.toPixels(pred, oCanvas);
 	}
