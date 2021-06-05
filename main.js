@@ -7,7 +7,7 @@
  context.fillStyle = start_background_color;
  context.fillRect(0, 0, canvas.width, canvas.height);
 
- let draw_color = "white";
+ let draw_color = "#fb8a05"; //lane
  let draw_width = "55";
  let is_drawing = false;
 
@@ -28,15 +28,13 @@
  function start(event) {
  	is_drawing = true;
  	context.beginPath();
- 	context.moveTo(event.clientX - canvas.offsetLeft,
- 		event.clientY - canvas.offsetTop);
+ 	context.moveTo(getX(event), getY(event));
  	event.preventDefault();
  }
 
  function draw(event) {
  	if (is_drawing) {
- 		context.lineTo(event.clientX - canvas.offsetLeft,
- 			event.clientY - canvas.offsetTop);
+ 		context.lineTo(getX(event), getY(event));
  		context.strokeStyle = draw_color;
  		context.lineWidth = draw_width;
  		context.lineCap = "round";
@@ -44,6 +42,18 @@
  		context.stroke();
  	}
  	event.preventDefault();
+ }
+
+ function getX(event) {
+ 	if (event.pageX == undefined) {return event.targetTouches[0].pageX -
+ 	canvas.offsetLeft} //i.e. if no click event is registered, check for touch event
+ 	else {return event.pageX - canvas.offsetLeft}
+ }
+
+ function getY(event) {
+ 	if (event.pageY == undefined) {return event.targetTouches[0].pageY -
+ 	canvas.offsetTop} //i.e. if no click event is registered, check for touch event
+ 	else {return event.pageY - canvas.offsetTop}
  }
  
  function stop(event) {
@@ -60,3 +70,4 @@ function clear_canvas(){
 		context.clearRect(0, 0, canvas.width, canvas.height);
 		context.fillRect(0, 0, canvas.width, canvas.height);
 }
+
