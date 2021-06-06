@@ -71,7 +71,7 @@ function predict(imgData) {
 function preprocess(imgData) {
     return tf.tidy(() => {
         //convert to a tensor 
-        const tensor = tf.fromPixels(imgData).toFloat()
+        const tensor = tf.browser.fromPixels(imgData).toFloat()
         //resize 
         const resized = tf.image.resizeBilinear(tensor, [256, 256])
                 
