@@ -81,6 +81,9 @@ function preprocess(imgData) {
 
         //We add a dimension to get a batch shape 
         const batched = normalized.expandDims(0)
+
+        console.log("batched is " + batched);
+        console.log("batches.shape is " + batched.shape);
         
         return batched
     })
