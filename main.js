@@ -117,7 +117,7 @@ function samplePredict(imgName)
 //load model
 async function start(imgName, modelPath) {
 	//load the model
-	model = await tf.loadLayersModel(modelPath);
+	model = await tf.loadModel(modelPath);
 
 	//status
 	document.getElementById('status').innerHTML = "Model Loaded";
