@@ -5,10 +5,9 @@ body{
 }
 
 canvas {
-	box-shadow: -3px 2px 9px 6px black;
+	border: 3px solid;
 	cursor: pointer;
-	margin-top: 15px;
-	margin-left: 70px;
+	display:inline-block;
 }
 
 .content {
@@ -47,7 +46,9 @@ canvas {
 	margin: 0 15px;
 }
 
-.pen-range {
-	/*align-self: center;
-	margin: 0 15 px;*/
+#range-slider {
+	cursor: pointer;
 }
+
+
+

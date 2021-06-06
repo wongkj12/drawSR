@@ -1,57 +1,42 @@
  var model = undefined;
-
- var canvas = document.getElementById("canvas");
- canvas.width = 256;
- canvas.height = 256;
-
+ var canvas;
  var oCanvas = document.getElementById("oCanvas");
- oCanvas.width = 256;
- oCanvas.height = 256;
 
-
- let context = canvas.getContext("2d")
- let start_background_color = "white"
- context.fillStyle = start_background_color;
- context.fillRect(0, 0, canvas.width, canvas.height);
-
- let draw_color = "#fb8a05"; //lane
- let draw_width = "55";
- let is_drawing = false;
 
 //color pallette click event
- function change_color(element){
- 	draw_color = element.style.background;
+$(".color-field").on("click",function(element){
+	draw_color = element.target.style.background;
+})
+
+//slider
+$("#range-slider").on("input change", function() {
+	canvas.freeDrawingBrush.width = this.value;
+})
+
+
+
+ function prepareCanvas() {
+ 	canvas = window._canvas = new fabric.Canvas('canvas');
+ 	canvas.backgroundColor = "white";
+ 	canvas.isDrawingMode = 1;
+ 	canvas.freeDrawingBrush.color = "#fb8a05" //lane
+ 	canvas.freeDrawingBrush.width = $("#range-slider").value
+ 	canvas.renderAll();
+ 	//setup listeners to start predicting when the mouse is up
+ 	canvas.on("mouse:up", function(e) {
+ 		//get img from drawing canvas => tf.predict => output canvas
+ 		const imgData = getImageData();
+ 		const pred = predict(imgData)
+ 		tf.toPixels(pred, oCanvas)
+
+ 		//mousePressed = false;
+ 	});
+ 	/*canvas.on('mouse:down', function(e) {
+        mousePressed = true
+    });*/
+
  }
 
-
- canvas.addEventListener("touchstart", startcanvas, false);
- canvas.addEventListener("touchmove", draw, false);
- canvas.addEventListener("mousedown", startcanvas, false);
- canvas.addEventListener("mousemove", draw, false);
-
- canvas.addEventListener("touchend",stop,false);
-
- //start predicting when the mouse is up
- canvas.addEventListener("mouseup",() => {
- 	stop();
- 	do_predict();},false);
- canvas.addEventListener("mouseout",stop,false);
-
-
-
- function startcanvas(event) {
- 	is_drawing = true;
- 	context.beginPath();
- 	context.moveTo(getX(event), getY(event));
- 	event.preventDefault();
- }
-
-//start prediction from drawing canvas => tf.predict => output canvas
- function do_predict(event) {
- 	const imgData = getImageData();
- 	const pred = predict(imgData);
- 	tf.toPixels(pred, oCanvas);
- }
 
  //get current image data
  function getImageData() {
@@ -61,7 +46,7 @@
  	const y = 0 * dpi;
  	const w = canvas.width * dpi;
  	const h = canvas.height * dpi;
- 	const imgData = context.getImageData(0, 0, w, h)
+ 	const imgData = canvas.contextContainer.getImageData(x, y, w, h);
  	return imgData;
  }
 
@@ -112,6 +97,7 @@ function postprocess(tensor){
     })
 }
 
+
 //initial sample prediction
 function samplePredict(imgName)
 {
@@ -122,7 +108,7 @@ function samplePredict(imgName)
 			scaleX: canvas.width / 256,
 			scaleY: canvas.height / 256,
 		});
-		context.drawImage(img, 0, 0);
+		canvas.add(img);
 		const pred = predict(imgData);
 		tf.toPixels(pred, oCanvas);
 	}
@@ -139,11 +125,62 @@ async function start(imgName, modelPath) {
 	//sample
 	samplePredict(imgName);
 
-
+	allowDrawing();
 }
 
+function allowDrawing(){
+	canvas.isDrawingMode = 1; //neccessary?
 
+	//allow clear
+	$("#clear").prop("disabled",false);
+	var slider = document.getElementById("range-slider");
+	slider.oninput = function() {
+		canvas.freeDrawingBrush.width = this.value;
+	};
+}
 
+function erase() {
+	canvas.clear();
+	canvas.backgroundColor = "white";
+}
+
+//release resources when leaving page?
+function release()
+{
+	if(model != undefined){
+		model.dispose();
+	}
+}
+
+window.onbeforeunload = function(e) {
+	release();
+}
+
+ /*
+ --------------------OLD CANVAS SCRIPT--------------------
+
+ var canvas = document.getElementById("canvas");
+ canvas.width = 256;
+ canvas.height = 256;
+
+ let context = canvas.getContext("2d")
+ let start_background_color = "white"
+ context.fillStyle = start_background_color;
+ context.fillRect(0, 0, canvas.width, canvas.height);
+
+ canvas.addEventListener("touchstart", startcanvas, false);
+ canvas.addEventListener("touchmove", draw, false);
+ canvas.addEventListener("mousedown", startcanvas, false);
+ canvas.addEventListener("mousemove", draw, false);
+
+ canvas.addEventListener("touchend",stop,false);
+
+ function startcanvas(event) {
+ 	is_drawing = true;
+ 	context.beginPath();
+ 	context.moveTo(getX(event), getY(event));
+ 	event.preventDefault();
+ }
  function draw(event) {
  	if (is_drawing) {
  		context.lineTo(getX(event), getY(event));
@@ -181,5 +218,5 @@ function clear_canvas(){
 		context.fillStyle = start_background_color;
 		context.clearRect(0, 0, canvas.width, canvas.height);
 		context.fillRect(0, 0, canvas.width, canvas.height);
-}
+}*/
 
