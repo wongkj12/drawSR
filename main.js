@@ -1,3 +1,10 @@
+ //tj.js script
+ var script = document.createElement("script");
+ script.type = 'text/javascript';
+ script.src = 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest';
+ document.head.appendChild(script);
+
+
  var model = undefined;
  var canvas;
  var oCanvas = document.getElementById("oCanvas");
