@@ -34,7 +34,7 @@ $("#range-slider").on("input change", function() {
  		//get img from drawing canvas => tf.predict => output canvas
  		const imgData = getImageData();
  		const pred = predict(imgData)
- 		tf.toPixels(pred, oCanvas)
+ 		tf.browser.toPixels(pred, oCanvas)
 
  		//mousePressed = false;
  	});
@@ -117,7 +117,7 @@ function samplePredict(imgName)
 		});
 		canvas.add(img);
 		const pred = predict(imgData);
-		tf.toPixels(pred, oCanvas);
+		tf.browser.toPixels(pred, oCanvas);
 	}
 }
 
