@@ -75,7 +75,9 @@ function preprocess(imgData) {
         //resize 
         const resized = tf.image.resizeBilinear(tensor, [256, 256])
         console.log("resized.shape is " + resized.shape);
-                
+
+        return resized;
+        /*        
         //normalize 
         const offset = tf.scalar(127.5);
         const normalized = resized.div(offset).sub(tf.scalar(1.0));
@@ -85,7 +87,7 @@ function preprocess(imgData) {
         const batched = normalized.expandDims(0)
         console.log("batched.shape is " + batched.shape);
         
-        return batched
+        return batched*/
     })
 }
 
