@@ -9,19 +9,6 @@
  var canvas;
  var oCanvas = document.getElementById("oCanvas");
 
-
-//color pallette click event
-$(".color-field").on("click",function(element){
-	draw_color = element.target.style.background;
-})
-
-//slider
-$("#range-slider").on("input change", function() {
-	canvas.freeDrawingBrush.width = this.value;
-})
-
-
-
  function prepareCanvas() {
  	canvas = window._canvas = new fabric.Canvas('canvas');
  	canvas.backgroundColor = "white";
@@ -156,11 +143,17 @@ function allowDrawing(){
 
 	//allow clear
 	$("#clear").prop("disabled",false);
+
 	var slider = document.getElementById("range-slider");
+
 	slider.oninput = function() {
 		canvas.freeDrawingBrush.width = this.value;
-		canvas.freeDrawingBrush.color = draw_color;
 	};
+
+	$(".color-field").on("click",function(element){
+		canvas.freeDrawingBrush.color = element.target.style.background;
+	};
+
 }
 
 function erase() {
