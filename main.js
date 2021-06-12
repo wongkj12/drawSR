@@ -152,7 +152,7 @@ function allowDrawing(){
 
 	$(".color-field").on("click",function(element){
 		canvas.freeDrawingBrush.color = element.target.style.background;
-	};
+	});
 
 }
 
