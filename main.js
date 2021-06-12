@@ -20,9 +20,11 @@
  	//setup listeners to start predicting when the mouse is up
  	canvas.on("mouse:up", function(e) {
  		//get img from drawing canvas => tf.predict => output canvas
- 		const imgData = getImageData();
- 		const pred = predict(imgData)
- 		tf.browser.toPixels(pred, oCanvas)
+ 		setTimeout(function(){
+ 			const imgData = getImageData();
+ 			const pred = predict(imgData)
+ 			tf.browser.toPixels(pred, oCanvas)
+ 		}, 500); //waits 500ms before getting imgdata
 
  		//mousePressed = false;
  	});
