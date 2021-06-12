@@ -159,6 +159,7 @@ function allowDrawing(){
 	var slider = document.getElementById("range-slider");
 	slider.oninput = function() {
 		canvas.freeDrawingBrush.width = this.value;
+		canvas.freeDrawingBrush.color = draw_color;
 	};
 }
 
