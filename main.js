@@ -67,6 +67,7 @@ function predict(imgData) {
 		) as tf.Tensor);
 		const postImg = postprocess(oImg);
 		return postImg;
+		});
 
 
 
@@ -75,7 +76,6 @@ function predict(imgData) {
 		//post process
 		const postImg = postprocess(oImg);
 		return postImg;*/
-	})
 }
 
 //preprocessing
