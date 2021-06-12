@@ -14,7 +14,8 @@
  	canvas.backgroundColor = "white";
  	canvas.isDrawingMode = 1;
  	canvas.freeDrawingBrush.color = "#fb8a05" //lane
- 	canvas.freeDrawingBrush.width = $("#range-slider").value
+
+ 	canvas.freeDrawingBrush.width = 55;
  	canvas.renderAll();
  	//setup listeners to start predicting when the mouse is up
  	canvas.on("mouse:up", function(e) {
@@ -34,8 +35,7 @@
 
  //get current image data
  function getImageData() {
- 	//const dpi = window.devicePixelRatio
- 	const dpi = 1;
+ 	const dpi = window.devicePixelRatio;
  	const x = 0 * dpi;
  	const y = 0 * dpi;
  	const w = canvas.width * dpi;
