@@ -61,10 +61,10 @@ $("#range-slider").on("input change", function() {
 function predict(imgData) {
 	return tf.tidy(() => {
 		console.log("Predicting...")
-		const oImg = (await model.apply(
+		const oImg = model.apply(
 			preprocess(imgData),
 			{training: true}
-		) as tf.Tensor);
+		); //as tf.Tensor
 		const postImg = postprocess(oImg);
 		return postImg;
 		});
