@@ -30,13 +30,8 @@
  			const imgData = getImageData();
  			const pred = predict(imgData)
  			tf.browser.toPixels(pred, oCanvas)
- 		}, 300); //waits 300ms before getting imgdata
-
- 		//mousePressed = false;
+ 		}, 300); //waits 300ms before getting imgdata for canvas to update
  	});
- 	/*canvas.on('mouse:down', function(e) {
-        mousePressed = true
-    });*/
 
  }
 
@@ -59,18 +54,11 @@ function predict(imgData) {
 		const oImg = model.apply(
 			preprocess(imgData),
 			{training: true}
-		); //as tf.Tensor
+		); 
 		const postImg = postprocess(oImg);
 		return postImg;
 		});
 
-
-
-		/*
-		const oImg = model.predict(preprocess(imgData));
-		//post process
-		const postImg = postprocess(oImg);
-		return postImg;*/
 }
 
 //preprocessing
@@ -87,7 +75,7 @@ function preprocess(imgData) {
         const normalized = resized.div(offset).sub(tf.scalar(1.0));
         console.log("normalized.shape is " + normalized.shape);
 
-        //We add a dimension to get a batch shape 
+        //Add a dimension to get a batch shape 
         const batched = normalized.expandDims(0)
         console.log("batched.shape is " + batched.shape);
         
@@ -155,10 +143,6 @@ function allowDrawing(){
 
 	var slider = document.getElementById("range-slider");
 
-	/*slider.oninput = function() {
-		canvas.freeDrawingBrush.width = this.value;
-	};*/
-
 	$(".color-field").on("click",function(element){
 		canvas.freeDrawingBrush.color = element.target.style.background;
 	});
@@ -170,7 +154,6 @@ function erase() {
 	canvas.backgroundColor = "white";
 }
 
-//release resources when leaving page?
 function release()
 {
 	if(model != undefined){
@@ -182,67 +165,4 @@ window.onbeforeunload = function(e) {
 	release();
 }
 
- /*
- --------------------OLD CANVAS SCRIPT--------------------
-
- var canvas = document.getElementById("canvas");
- canvas.width = 256;
- canvas.height = 256;
-
- let context = canvas.getContext("2d")
- let start_background_color = "white"
- context.fillStyle = start_background_color;
- context.fillRect(0, 0, canvas.width, canvas.height);
-
- canvas.addEventListener("touchstart", startcanvas, false);
- canvas.addEventListener("touchmove", draw, false);
- canvas.addEventListener("mousedown", startcanvas, false);
- canvas.addEventListener("mousemove", draw, false);
-
- canvas.addEventListener("touchend",stop,false);
-
- function startcanvas(event) {
- 	is_drawing = true;
- 	context.beginPath();
- 	context.moveTo(getX(event), getY(event));
- 	event.preventDefault();
- }
- function draw(event) {
- 	if (is_drawing) {
- 		context.lineTo(getX(event), getY(event));
- 		context.strokeStyle = draw_color;
- 		context.lineWidth = draw_width;
- 		context.lineCap = "round";
- 		context.lineJoin = "round";
- 		context.stroke();
- 	}
- 	event.preventDefault();
- }
-
- function getX(event) {
- 	if (event.pageX == undefined) {return event.targetTouches[0].pageX -
- 	canvas.offsetLeft} //i.e. if no click event is registered, check for touch event
- 	else {return event.pageX - canvas.offsetLeft}
- }
-
- function getY(event) {
- 	if (event.pageY == undefined) {return event.targetTouches[0].pageY -
- 	canvas.offsetTop} //i.e. if no click event is registered, check for touch event
- 	else {return event.pageY - canvas.offsetTop}
- }
  
- function stop(event) {
- 	if (is_drawing){
- 		context.stroke();
- 		context.closePath();
- 		is_drawing = false;
- 	}
- 	event.preventDefault();
- }
-
-function clear_canvas(){
-		context.fillStyle = start_background_color;
-		context.clearRect(0, 0, canvas.width, canvas.height);
-		context.fillRect(0, 0, canvas.width, canvas.height);
-}*/
-
