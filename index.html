@@ -15,20 +15,22 @@
 
 
 	<body>
-		<div style="border-style:groove; margin-top:50px;" class="content">
-			<div>
+		<div style="border-style:solid; border-color:coral; margin-top:50px;" class="content">
+			<div class = "title">
 				<h1>Pix2Pix DrawSR</h1>
+				<h4 style="color:#919191">wongkj12</h4>
 			</div>
-			<div class="field">	
-				<p style="margin-left:15px;"> An implementation of pix2pix on the browser with Tensorflow.js. Once the model loads, draw on the canvas to see it transform into the style of Summoner's Rift! (Mobile devices may not be able to handle the current model) Code <a href="https://github.com/wongkj12/drawSR">here.</a> </p>
+
+			<div class="drawing-field">	
+				<p style="margin-left:15px;"> An implementation of pix2pix on the browser with Tensorflow.js. Once the model loads, draw on the canvas to see it transform into the style of Summoner's Rift! (Code runs in real time, may take awhile. Mobile devices may not be able to handle the current model) Code <a href="https://github.com/wongkj12/drawSR">here.</a> </p>
 
 				<p style="text-align:center;" id = 'status'>Loading Model ... (212 MB) </p>
 				<div class="loader" id="loader1"></div>
 
 				<div class = "canvas-wrapper">
-					<canvas id = "canvas" class = "canvas" width = "450" height = "450"></canvas>
+					<canvas id = "canvas" class = "canvas" width = "400" height = "400"></canvas>
 
-					<canvas id = "oCanvas" class = "canvas" width = "450" height = "450"></canvas>
+					<canvas id = "oCanvas" class = "canvas" width = "400" height = "400"></canvas>
 				</div>
 
 				<div class = "tools">
@@ -46,7 +48,21 @@
 
 					<input id="range-slider" type="range" min="10" max="100" value="55">
 				</div>
+
+				<div class = "text" style="margin-left:15px; margin-top:60px;">
+					<p>The model was trained on 143 pairs of images (color labels:SR) to attempt to generate new "interpretations" of Summoners Rift. Training data was generated from 256x256 slices of this labelling I painted:</p>
+					<img style="border:1px solid;" src="labelling.png">
+					<p style="margin-top:30px;">After training over ~100+ epochs, here are some interesting images showcasing the model's progress:</p>
+					<img style="border:1px solid; margin-left:30px;" src="training_process.png">
 			</div>
+
+
+
+
+
+
+
+
 		</div>
 
 		<script src="main.js"></script>

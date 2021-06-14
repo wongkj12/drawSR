@@ -1,14 +1,17 @@
 
 
 body{
-	background: #000000;
-	background-image: url("sr_background.jpg");
+	background: #ececec;
 	font-family: helvetica;
 }
 
 canvas {
 	border: 3px solid;
 	cursor: pointer;
+}
+
+.title {
+	line-height:40%;
 }
 
 .canvas-wrapper {
@@ -19,7 +22,7 @@ canvas {
 .content {
 		max-width: 960px;
 		margin: auto;
-		background: #f7f7f7;
+		background: white;
         padding: 10px;
 }
 
@@ -33,7 +36,7 @@ canvas {
   animation: spin 2s linear infinite;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20	px;
+  margin-bottom: 10px;
 }
 
 @keyframes spin {
