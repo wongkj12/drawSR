@@ -5,7 +5,7 @@
  document.head.appendChild(script);
 
 
- const model_input_size = 256;
+ const model_input_size = 512;
  var model = undefined;
  var canvas;
  var oCanvas = document.getElementById("oCanvas");
@@ -74,11 +74,11 @@ function preprocess(imgData) {
         //convert to a tensor 
         const tensor = tf.browser.fromPixels(imgData).toFloat()
         //resize 
-        const resized = tf.image.resizeBilinear(tensor, [, 256])
+        const resized = tf.image.resizeBilinear(tensor, [model_input_size, model_input_size])
         console.log("resized.shape is " + resized.shape);
               
         //normalize 
-        const offset = tf.scalar(127.5);
+        const offset = tf.scalar(0.5*model_input_size);
         const normalized = resized.div(offset).sub(tf.scalar(1.0));
         console.log("normalized.shape is " + normalized.shape);
 
@@ -116,8 +116,8 @@ function samplePredict(imgName)
 	imgData.src = imgName
 	imgData.onload = function () {
 		const img = new fabric.Image(imgData, {
-			scaleX: canvas.width / 256,
-			scaleY: canvas.height / 256,
+			scaleX: canvas.width / model_input_size,
+			scaleY: canvas.height / model_input_size,
 		});
 		canvas.add(img);
 		const pred = predict(imgData);
