@@ -1,10 +1,9 @@
 
 
 body{
-	background: #b4eced;
+	background: #000000;
 	background-image: url("sr_background.jpg");
 	font-family: helvetica;
-	overflow:auto;
 }
 
 canvas {
@@ -22,7 +21,7 @@ canvas {
 		margin: auto;
 		background: #f7f7f7;
         padding: 10px;
-	}
+}
 
 .loader {  
   display: block;
