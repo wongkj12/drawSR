@@ -142,6 +142,7 @@ async function start(imgName, modelPath) {
 
 	//status
 	document.getElementById('status').innerHTML = "Model Loaded!";
+	document.getElementById('loader1').style.display = "none"
 
 	allowDrawing();
 }

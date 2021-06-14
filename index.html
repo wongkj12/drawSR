@@ -19,16 +19,19 @@
 
 	<body>
 		<div style="border-style:groove; margin-top:50px;" class="content">
-			<h1 style="margin-left:20px;">Pix2Pix DrawSR</hl>
+			<div>
+				<h1>Pix2Pix DrawSR</h1>
+			</div>
 			<div class="field">	
-				<p style="font-size:20px; margin-left:15px;"> An implementation of pix2pix on the browser with Tensorflow.js. Once the model loads, draw on the canvas to see it transform into the style of Summoner's Rift! (Mobile devices may not be able to handle the current model) Code <a href="https://github.com/wongkj12/drawSR">here.</a> </p>
+				<p style="margin-left:15px;"> An implementation of pix2pix on the browser with Tensorflow.js. Once the model loads, draw on the canvas to see it transform into the style of Summoner's Rift! (Mobile devices may not be able to handle the current model) Code <a href="https://github.com/wongkj12/drawSR">here.</a> </p>
 
-				<p style="font-size:20px; margin-left:15px;" id = 'status'>Loading Model ... (212 MB) </p>
+				<p style="text-align:center;" id = 'status'>Loading Model ... (212 MB) </p>
+				<div class="loader" id="loader1"></div>
 
 				<div class = "canvas-wrapper">
-					<canvas id = "canvas" class = "canvas" width = "500" height = "500"></canvas>
+					<canvas id = "canvas" class = "canvas" width = "450" height = "450"></canvas>
 
-					<canvas id = "oCanvas" class = "canvas" width = "500" height = "500"></canvas>
+					<canvas id = "oCanvas" class = "canvas" width = "450" height = "450"></canvas>
 				</div>
 
 				<div class = "tools">

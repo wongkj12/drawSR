@@ -15,15 +15,32 @@ canvas {
 .canvas-wrapper {
 	display: flex;
 	justify-content: space-around;	
-	overflow: auto;
 }
 	
 .content {
-		max-width: 1200px;
+		max-width: 960px;
 		margin: auto;
 		background: #f7f7f7;
-        /*padding: 10px;*/
+        padding: 10px;
 	}
+
+.loader {  
+  display: block;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #403f3f;	
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10	px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .tools {
 	display: flex;
