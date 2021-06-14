@@ -13,7 +13,7 @@
  //slider
  $("#range-slider").on("change", function() {
  	canvas.freeDrawingBrush.width = this.value;
- }
+ });
 
  function prepareCanvas() {
  	canvas = window._canvas = new fabric.Canvas('canvas');
