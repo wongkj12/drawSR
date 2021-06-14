@@ -20,6 +20,7 @@
  	canvas.renderAll();
  	//setup listeners to start predicting when the mouse is up
  	canvas.on("mouse:up", function(e) {
+ 		canvas.renderAll(); //?
  		//get img from drawing canvas => tf.predict => output canvas
  		setTimeout(function(){
  			const imgData = getImageData();
@@ -132,17 +133,17 @@ async function start(imgName, modelPath) {
 
 	console.log("model is \n" + model.summary());
 
-	//status
-	document.getElementById('status').innerHTML = "Model Loaded!";
-
 	//sample
 	samplePredict(imgName);
+
+	//status
+	document.getElementById('status').innerHTML = "Model Loaded!";
 
 	allowDrawing();
 }
 
 function allowDrawing(){
-	canvas.isDrawingMode = 1; //neccessary?
+	canvas.isDrawingMode = 1;
 
 	//allow clear
 	$("#clear").prop("disabled",false);
