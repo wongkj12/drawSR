@@ -5,7 +5,7 @@
  document.head.appendChild(script);
 
 
- const model_input_size = 512;
+ const model_input_size = 256;
  var model = undefined;
  var canvas;
  var oCanvas = document.getElementById("oCanvas");
@@ -25,7 +25,7 @@
  			const imgData = getImageData();
  			const pred = predict(imgData)
  			tf.browser.toPixels(pred, oCanvas)
- 		}, 500); //waits 500ms before getting imgdata
+ 		}, 300); //waits 300ms before getting imgdata
 
  		//mousePressed = false;
  	});
