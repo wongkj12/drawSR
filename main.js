@@ -5,6 +5,7 @@
  document.head.appendChild(script);
 
 
+ const model_input_size = 256;
  var model = undefined;
  var canvas;
  var oCanvas = document.getElementById("oCanvas");
@@ -12,7 +13,7 @@
  function prepareCanvas() {
  	canvas = window._canvas = new fabric.Canvas('canvas');
  	canvas.backgroundColor = "white";
- 	canvas.isDrawingMode = 1;
+ 	canvas.isDrawingMode = 0; //dont allow first
  	canvas.freeDrawingBrush.color = "#fb8a05" //lane
 
  	canvas.freeDrawingBrush.width = 55;
@@ -73,7 +74,7 @@ function preprocess(imgData) {
         //convert to a tensor 
         const tensor = tf.browser.fromPixels(imgData).toFloat()
         //resize 
-        const resized = tf.image.resizeBilinear(tensor, [256, 256])
+        const resized = tf.image.resizeBilinear(tensor, [, 256])
         console.log("resized.shape is " + resized.shape);
               
         //normalize 
