@@ -12,7 +12,7 @@
 
  //slider
  $("#range-slider").on("change", function() {
- 	canvas.freeDrawingBrush.width = this.value;
+ 	canvas.freeDrawingBrush.width = parseInt(this.value);
  });
 
  function prepareCanvas() {

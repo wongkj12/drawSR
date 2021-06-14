@@ -15,6 +15,7 @@ canvas {
 .canvas-wrapper {
 	display: flex;
 	justify-content: space-around;	
+	overflow: auto;
 }
 	
 .content {
