@@ -1,5 +1,10 @@
+html{
+	min-width:1200px;
+}
+
 body{
-	background: #defade;
+	background: #b4eced;
+	background-image: url("sr_background.jpg");
 	font-family: helvetica;
 	overflow:auto;
 }
@@ -7,19 +12,24 @@ body{
 canvas {
 	border: 3px solid;
 	cursor: pointer;
-	display:inline-block;
 }
 
+.canvas-wrapper {
+	display: flex;
+	justify-content: space-around;	
+}
+	
 .content {
 		max-width: 1200px;
 		margin: auto;
-		background: white;
-        padding: 10px;
+		background: #f7f7f7;
+        /*padding: 10px;*/
 	}
 
 .tools {
 	display: flex;
 	margin-top: 15px;
+	margin-left: 10px;
 }
 
 .tools .color-field{
@@ -31,6 +41,7 @@ canvas {
 	display: inline-block;
 	background-position: center right;
 	border-style: solid;
+	border-width: thin;
 	font-size: 13px;
 }
 

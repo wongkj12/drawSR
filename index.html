@@ -18,18 +18,22 @@
 
 
 	<body>
-		<div class="content">
-			<h1 style="text-align:center;">Pix2Pix DrawSR</hl>
+		<div style="border-style: groove" class="content">
+			<h1 style="">Pix2Pix DrawSR</hl>
 
 			<div class="field">	
-				<p style="font-size:20px"> An implementation of pix2pix on the browser with Tensorflow.js. Once the model loads, draw on the canvas to see it transform into the style of Summoner's Rift! (Mobile devices may not be able to handle the current model.) Code <a href="https://github.com/wongkj12/drawSR">here.</a> </p>
+				<p style="font-size:20px"> An implementation of pix2pix on the browser with Tensorflow.js. Once the model loads, draw on the canvas to see it transform into the style of Summoner's Rift! (Mobile devices may not be able to handle the current model) Code <a href="https://github.com/wongkj12/drawSR">here.</a> </p>
 
 				<p style="font-size:20px;" id = 'status'>Loading Model ... (212 MB) </p>
-				<canvas id = "canvas" class = "canvas" width = "400" height = "400"></canvas>
-				<canvas id = "oCanvas" class = "canvas" width = "400" height = "400"></canvas>
 
-				<div class = "tools"/>
-					<button onClick="erase()" type="button" id="clear" disabled>Clear</button>
+				<div class = "canvas-wrapper">
+					<canvas id = "canvas" class = "canvas" width = "500" height = "500"></canvas>
+
+					<canvas id = "oCanvas" class = "canvas" width = "500" height = "500"></canvas>
+				</div>
+
+				<div class = "tools">
+					<button onClick="erase()" class = "button" type="button" id="clear" disabled>Clear</button>
 
 					<div class="color-field" style="background: #ffffff;">bg</div> <!--background -->
 					<div class="color-field" style="background: #000cff;">river</div> <!--river -->

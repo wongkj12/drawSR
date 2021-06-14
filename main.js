@@ -107,7 +107,7 @@ function postprocess(tensor){
         return resized
     })
 }
-
+	
 
 //initial sample prediction
 function samplePredict(imgName)
@@ -133,7 +133,7 @@ async function start(imgName, modelPath) {
 	console.log("model is \n" + model.summary());
 
 	//status
-	document.getElementById('status').innerHTML = "Model Loaded";
+	document.getElementById('status').innerHTML = "Model Loaded!";
 
 	//sample
 	samplePredict(imgName);
