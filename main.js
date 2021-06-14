@@ -1,4 +1,4 @@
- //tj.js script
+ //tf.js script
  var script = document.createElement("script");
  script.type = 'text/javascript';
  script.src = 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest';
@@ -10,6 +10,11 @@
  var canvas;
  var oCanvas = document.getElementById("oCanvas");
 
+ //slider
+ $("#range-slider").on("change", function() {
+ 	canvas.freeDrawingBrush.width = this.value;
+ }
+
  function prepareCanvas() {
  	canvas = window._canvas = new fabric.Canvas('canvas');
  	canvas.backgroundColor = "white";
@@ -20,7 +25,6 @@
  	canvas.renderAll();
  	//setup listeners to start predicting when the mouse is up
  	canvas.on("mouse:up", function(e) {
- 		canvas.renderAll(); //?
  		//get img from drawing canvas => tf.predict => output canvas
  		setTimeout(function(){
  			const imgData = getImageData();
@@ -150,9 +154,9 @@ function allowDrawing(){
 
 	var slider = document.getElementById("range-slider");
 
-	slider.oninput = function() {
+	/*slider.oninput = function() {
 		canvas.freeDrawingBrush.width = this.value;
-	};
+	};*/
 
 	$(".color-field").on("click",function(element){
 		canvas.freeDrawingBrush.color = element.target.style.background;
