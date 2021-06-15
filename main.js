@@ -68,16 +68,12 @@ function preprocess(imgData) {
         const tensor = tf.browser.fromPixels(imgData).toFloat()
         //resize 
         const resized = tf.image.resizeBilinear(tensor, [model_input_size, model_input_size])
-        console.log("resized.shape is " + resized.shape);
-              
         //normalize 
         const offset = tf.scalar(0.5*model_input_size);
         const normalized = resized.div(offset).sub(tf.scalar(1.0));
-        console.log("normalized.shape is " + normalized.shape);
 
         //Add a dimension to get a batch shape 
         const batched = normalized.expandDims(0)
-        console.log("batched.shape is " + batched.shape);
         
         return batched
     })
