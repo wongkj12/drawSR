@@ -155,6 +155,7 @@ function allowDrawing(){
 
 	//allow clear
 	$("#clear").prop("disabled",false);
+	$("#random").prop("disabled",false);
 
 	var slider = document.getElementById("range-slider");
 
