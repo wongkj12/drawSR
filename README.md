@@ -27,7 +27,7 @@ Using OpenCV, I split this labelling of Summoner's Rift into 143 unique 256x256 
 I followed [affinelayer](https://github.com/affinelayer)'s instructions [here](https://github.com/affinelayer/pix2pix-tensorflow#creating-your-own-dataset) on how to combine the input & target images into the 512x256 image-pair format required for the pix2pix model.
 
 ## Training
-`nanopython pix2pix-tensorflow/pix2pix.py --mode train --output_dir train_output --input_dir train --max_epochs 200 --which_direction AtoB`
+`python pix2pix-tensorflow/pix2pix.py --mode train --output_dir train_output --input_dir train --max_epochs 200 --which_direction AtoB`
 
-Training was stopped after ~100+ epochs as the model didn't look like it was improving much past 70 epochs. I sticked to the default of `--ngf 64 --ndf 64` (number of generator & discriminator filters in the first conv layer) which resulted in a pretty large model size (212 MB). Training took about ~6 hours on my PC running on GTX 950.
+Training was stopped after ~100+ epochs as the model didn't look like it was improving much past 70 epochs. I sticked to the default of `--ngf 64 --ndf 64` (number of generator & discriminator filters in the first conv layer) which resulted in a pretty large model size (212 MB). Training took about ~6 hours on my PC running with GTX 950.
 
