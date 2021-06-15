@@ -2,7 +2,7 @@
 
 Try the live demo [here](https://wongkj12.github.io/drawSR/)
 
-!(/docs/sample.gif)
+![sample gif](/docs/sample.gif)
 
 This project was based on this tensorflow implementation of pix2pix: [https://github.com/affinelayer/pix2pix-tensorflow](https://github.com/affinelayer/pix2pix-tensorflow). 
 
