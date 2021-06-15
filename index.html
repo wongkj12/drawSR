@@ -53,9 +53,9 @@
 
 				<div class = "text" style="margin-left:15px; margin-top:60px;">
 					<p>The model was trained on 143 pairs of images (color labels:SR) to attempt to generate new "interpretations" of Summoners Rift. Training data was generated from 256x256 slices of this labelling I painted:</p>
-					<img style="border:1px solid;" src="labelling.png">
+					<img style="border:1px solid;" src="docs/labelling.png">
 					<p style="margin-top:30px;">After training over ~100+ epochs, here are some interesting images showcasing the model's progress:</p>
-					<img style="border:1px solid; margin-left:30px;" src="training_process.png">
+					<img style="border:1px solid; margin-left:30px;" src="docs/training_process.png">
 			</div>
 
 		</div>
@@ -68,7 +68,7 @@
 	<script>
 	$(window).on('load', function(){
 		prepareCanvas();
-		start("sr_sample.png", "model/model.json")
+		start("docs/sr_sample.png", "model/model.json")
 	});
 	</script>
 </html>
