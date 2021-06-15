@@ -72,7 +72,17 @@ canvas {
 	color: white;
 	background: black;
 	font-weight: bold;
-	margin: 0 15px;
+	margin: 0 px;
+}
+
+.tools #random {
+	height:40px;
+	border: solid;
+	cursor: pointer;
+	color: white;
+	background: purple;
+	font-weight: bold;
+	margin: 0 8px;
 }
 
 #range-slider {

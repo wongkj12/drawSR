@@ -100,6 +100,23 @@ function postprocess(tensor){
         return resized
     })
 }
+
+function random_sample()
+{
+	var imgData = new Image;
+	rand = Math.floor(Math.random() * 13) + 1;
+	imgData.src = "random_images/" + rand + ".png";
+	imgData.onload = function () {
+		const img = new fabric.Image(imgData, {
+			scaleX: canvas.width / model_input_size,
+			scaleY: canvas.height / model_input_size,
+		});
+		erase();
+		canvas.add(img);
+		const pred = predict(imgData);
+		tf.browser.toPixels(pred,oCanvas);
+	}
+}
 	
 
 //initial sample prediction
